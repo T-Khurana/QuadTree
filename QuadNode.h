@@ -1,14 +1,9 @@
 #include <iostream>
 #include <string>
-//#include "QuadTreeNode.h"
-
 
 using namespace std;
 
 class quad_tree_node{
-
-//friend class quad_tree;
-
 public:
 	string city_name;
 	double latitude;
@@ -27,23 +22,16 @@ public:
 	int search(double x, double y);
 	int attribute(string attr);
 	quad_tree_node* search_helper(double x, double y);
-	//double min (double x, double y, string d, string attr);
 	quad_tree_node* direction(string d);
-	//void print();
-	//void clear (quad_tree_node* root);
 
 };
 
 class quad_tree{
 
 private:
-
 	quad_tree_node* root;
 
-	
-
 public:
-	//int size;
 	quad_tree();
 	bool insert(string name, double x, double y, int pop, int col, int avg);
 	int searchx (double x, double y);

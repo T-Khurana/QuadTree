@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-//#include <float.h>
 #include <limits.h>
 #include "QuadNode.h"
 
@@ -12,7 +11,6 @@ int size=0;
 bool quad_tree_node::insert(quad_tree_node *current, quad_tree_node *node){
 
 	if ((current -> latitude == node -> latitude) && (current -> longitude == node -> longitude)){
-		//cout << current -> latitude << "==" << node -> latitude<<endl;
 		return false;
 	}
 
@@ -79,8 +77,6 @@ quad_tree_node::quad_tree_node(string name, double x, double y, int pop, int col
 	north_west=NULL;
 	south_east=NULL;
 	south_west=NULL;
-
-	//cout<<city_name<<" "<< latitude<<endl;
 }
 
 int quad_tree_node::search(double x, double y){
@@ -139,22 +135,14 @@ int quad_tree_node::search(double x, double y){
 
 }
 
-
-
-
-
-
-
 //Functions for the quad tree class
 
 quad_tree::quad_tree(){
 	root = NULL;
-
 }
 
 bool quad_tree:: insert (string name, double x, double y, int pop, int col, int avg){
 
-//cout<<"inside insert tree";
 	if (size==0){
 		root = new quad_tree_node (name, x, y, pop, col, avg);//, NULL, NULL, NULL, NULL);
 		size++;
@@ -162,15 +150,11 @@ bool quad_tree:: insert (string name, double x, double y, int pop, int col, int 
 	}
 
 	else if (size !=0){
-
-		//cout<< "x before: "<<x<<endl;
 		quad_tree_node *node= new quad_tree_node (name, x, y, pop, col, avg);//, NULL, NULL, NULL, NULL);
 
 		return node->insert(root,node);	
 
 	}
-
-
 }
 
 int quad_tree::searchx (double x, double y){
@@ -188,13 +172,11 @@ int quad_tree::searchx (double x, double y){
 quad_tree_node* quad_tree_node::search_helper(double x, double y){
 
 	if ((x==latitude) && (y==longitude)){
-		//cout<<"found "<<city_name<<endl;
 		return this;
 	}
 
 	else if ((x >=latitude) && (y > longitude)){
 		if (north_east == NULL){
-			//cout<<"not found"<<endl;
 			return nullptr;
 		}
 
@@ -206,7 +188,6 @@ quad_tree_node* quad_tree_node::search_helper(double x, double y){
 
 	else if ((x<latitude) && (y>=longitude)){
 		if (north_west == NULL){
-			//cout<<"not found"<<endl;
 			return nullptr;
 		}
 
@@ -217,7 +198,6 @@ quad_tree_node* quad_tree_node::search_helper(double x, double y){
 
 	else if ((x<=latitude)&&(y<longitude)){
 		if (south_west==NULL){
-			//cout<<"not found"<<endl;
 			return nullptr;
 		}
 
@@ -227,7 +207,6 @@ quad_tree_node* quad_tree_node::search_helper(double x, double y){
 	}
 	else if ((x>latitude)&&(y<=longitude)){
 		if (south_east == NULL){
-			//cout<<"not found"<<endl;
 			return nullptr;
 		}
 

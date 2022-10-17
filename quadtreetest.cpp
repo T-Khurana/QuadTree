@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-//#include "QuadNode.h"
 #include "QuadNode.cpp"
 
 using namespace std;
@@ -28,12 +27,10 @@ int main (){
 
 		if (command == "i"){
 
-			//cout<<input_line[0]<<endl;
 			int semi_colon_1=input_line.find(';');								//find the first semicolon
 			string city_name = input_line.substr(0, semi_colon_1);  //store city name in string
 			input_line.erase(0, semi_colon_1+1);	//erase the used string
 
-			//cout<<input_line<<endl;
 
 			int semi_colon_2=input_line.find(';');								//find second semicolon
 			string latitude=input_line.substr(0, semi_colon_2);	
@@ -56,7 +53,6 @@ int main (){
 			input_line.erase(0, semi_colon_5+1);
 
 			int s=stoi(input_line);
-			//cout<<"before insert\n";
 			bool val=tree.insert(city_name, x, y, p, r, s);
 			if (val){
 				cout<<"success"<<endl;
@@ -65,26 +61,10 @@ int main (){
 				cout<<"failure"<<endl;
 			}
 
-
-
-			/*cout<<city_name<<endl;
-			//cout<<semi_colon_1<<endl;
-			cout<<latitude<<endl;
-			cout<<longitude<<endl;
-			cout<<x<<endl;
-			cout<<y<<endl;
-			cout<<p<<endl;
-			cout<<r<<endl;
-			cout<<s<<endl;*/
-
-
-
 		}
-
 		else if (command == "size"){
 			int sz=tree.size_of_tree();
 			cout<<"tree size "<<sz<<endl;
-
 		}
 
 		else if (command == "s"){
@@ -192,9 +172,8 @@ int main (){
 			string d = input_line.substr(0, semi_colon_3);
 			input_line.erase(0, semi_colon_3+1);
 
-			//int semi_colon_4 = input_line.find(';');
-			string attrib = input_line;//.substr(0, semi_colon_4);
-			//input_line.erase(0, semi_colon_4+1);
+			string attrib = input_line;
+
 
 			quad_tree_node* point=tree.get_root()->search_helper(x1, y1);
 
@@ -220,21 +199,12 @@ int main (){
 
 			tree.printx(tree.get_root());
 			cout << endl;
-
 		}
 
 		else if (command == "clear"){
 
 			tree.clearx(tree.get_root());
-			//cout<<endl;
-
 		}
-
-
-
-
-
-
 	}
 
 	return 0;
